@@ -3,4 +3,9 @@
 ################################################################################
 
 /DuckDNS/bin/Debug/DynDNS.cfg
-/DuckDNS/obj/*
+/DuckDNS/obj/**
+/DuckDNS/bin/Debug/DuckDNS.exe.config
+/DuckDNS/bin/Debug/DuckDNS.pdb
+/DuckDNS/bin/Debug/DuckDNS.vshost.exe
+/DuckDNS/bin/Debug/DuckDNS.vshost.exe.config
+/DuckDNS/bin/Debug/DuckDNS.vshost.exe.manifest

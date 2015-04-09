@@ -9,7 +9,7 @@ namespace DuckDNS
 {
     class DDns
     {
-        private const string FILENAME = "DynDNS.cfg";
+        private const string FILENAME = "DuckDNS.cfg";
         public string Domain;
         public string Token;
         public string Interval;
