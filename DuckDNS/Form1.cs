@@ -19,15 +19,17 @@ namespace DuckDNS
         {
             InitializeComponent();
             notifyIcon.Icon = Icon;
-            Top = Screen.PrimaryScreen.WorkingArea.Bottom - (Height + 200);
-            Left = Screen.PrimaryScreen.WorkingArea.Right - (Width + 25);
+            //Top = Screen.PrimaryScreen.WorkingArea.Bottom - (Height + 200);
+            //Left = Screen.PrimaryScreen.WorkingArea.Right - (Width + 25);
             ddns.Load();
             tbDomain.Text = ddns.Domain;
             tbToken.Text = ddns.Token;
             cbInterval.Text = ddns.Interval;
             ParseInterval();
             RefreshTimer();
-            UpdateDNS();
+            allowshowdisplay = tbDomain.Text.Length == 0 || tbToken.Text.Length == 0;
+            if (!allowshowdisplay)
+                UpdateDNS();
         }
 
         protected override void SetVisibleCore(bool value)
@@ -41,7 +43,8 @@ namespace DuckDNS
             lblInfo.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " (" + (update ? "OK" : "FAILED") + ")";
             if (!update)
             {
-                MessageBox.Show("Error updating domain","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Error updating Duck DNS domain","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                allowshowdisplay = true;
                 Show();
             }
         }
