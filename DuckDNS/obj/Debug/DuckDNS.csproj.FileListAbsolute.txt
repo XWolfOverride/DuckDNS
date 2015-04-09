@@ -7,3 +7,4 @@ C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\obj\Debug\DuckDNS.Properties
 C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\obj\Debug\DuckDNS.csproj.GenerateResource.Cache
 C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\obj\Debug\DuckDNS.exe
 C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\obj\Debug\DuckDNS.pdb
+C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\obj\Debug\DuckDNS.FAbout.resources

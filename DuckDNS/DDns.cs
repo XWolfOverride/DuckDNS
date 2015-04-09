@@ -13,10 +13,10 @@ namespace DuckDNS
         public string Domain;
         public string Token;
         public string Interval;
+        private WebClient cli = new WebClient();
 
         public bool Update(){
             string url="https://www.duckdns.org/update?domains="+Domain+"&token="+Token+"&ip=";
-            WebClient cli = new WebClient();
             string data = cli.DownloadString(url);
             return data == "OK";
         }

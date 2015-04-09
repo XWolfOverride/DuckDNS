@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DuckDNS.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,8 @@ namespace DuckDNS
         private int intervalMS;
         private bool allowshowdisplay = false;
         private bool canClose = false;
+        private Icon icoTray = Resources.tray;
+        private Icon icoTrayC = Resources.tray_checking;
 
         public Form1()
         {
@@ -29,6 +32,7 @@ namespace DuckDNS
             cbInterval.Text = ddns.Interval;
             ParseInterval();
             RefreshTimer();
+            notifyIcon.Icon = icoTray;
             allowshowdisplay = tbDomain.Text.Length == 0 || tbToken.Text.Length == 0;
             if (!allowshowdisplay)
                 UpdateDNS();
@@ -36,18 +40,33 @@ namespace DuckDNS
 
         protected override void SetVisibleCore(bool value)
         {
-            base.SetVisibleCore(allowshowdisplay ? value : allowshowdisplay);
+
+            if (!allowshowdisplay)
+            {
+                allowshowdisplay = true;
+                if (!IsHandleCreated && value)
+                    CreateHandle();
+            }
+            else
+                base.SetVisibleCore(value);
         }
 
         private void UpdateDNS()
         {
-            bool update=ddns.Update();
-            lblInfo.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " (" + (update ? "OK" : "FAILED") + ")";
-            if (!update)
+            try
             {
-                MessageBox.Show("Error updating Duck DNS domain","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                allowshowdisplay = true;
-                Show();
+                notifyIcon.Icon = icoTrayC;
+                bool update = ddns.Update();
+                lblInfo.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " (" + (update ? "OK" : "FAILED") + ")";
+                if (!update)
+                {
+                    MessageBox.Show("Error updating Duck DNS domain", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Show();
+                }
+            }
+            finally
+            {
+                notifyIcon.Icon = icoTray;
             }
         }
 
@@ -108,7 +127,6 @@ namespace DuckDNS
 
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
-            allowshowdisplay = true;
             Show();
         }
 
@@ -145,6 +163,17 @@ namespace DuckDNS
         {
             string linkPath = Windows.GetStartupPath() + Path.DirectorySeparatorChar + "DuckDNS.lnk";
             WShellLink.CreateLink(linkPath,"Duck DNS Updater",Assembly.GetExecutingAssembly().Location);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FAbout.Execute();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            icoTray.Dispose();
+            icoTrayC.Dispose();
         }
     }
 }

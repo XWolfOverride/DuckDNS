@@ -59,5 +59,25 @@ namespace DuckDNS.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon tray {
+            get {
+                object obj = ResourceManager.GetObject("tray", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon tray_checking {
+            get {
+                object obj = ResourceManager.GetObject("tray_checking", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

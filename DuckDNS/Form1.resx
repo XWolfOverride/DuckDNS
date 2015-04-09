@@ -123,37 +123,13 @@
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>203, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="notifyIcon.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAwAAAAmAAAANUDLi78BEZG/wRISP8DMzP/AAEB3QAAAKUAAABFAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAACwAzw8/wq2tv8P////D////w7///8O////D////w////8Ly8v/BEVF/wAA
-        AGAAAAAAAAAAAAAAAAAAAABGBEZG/w7///8O////Dv///w7///8O////Dv///w7///8O////Dv///w79
-        /f8BERH/AAAAEQAAAAAAAAAAAAAAog719f8O////Dv///w7///8O////Dv///w7///8O////Dv///w7/
-        //8O////CIaG/wAAAFAAAAAAAAAAAAEaGt8P////Dv///w7///8O////Dv///w7///8O////Dv///w7/
-        //8O////Dv///w3p6f8AAACOAAAAAAAAAAACKSn3Dv///w7///8O////Dv///w7///8O////Dv///w7/
-        //8O////Dv///w7///8O+/v/AAAAnQAAAAAAAAAAAiQk7w////8O////Dv///w7///8O////Dv///w7/
-        //8O////Dv///w7///8O////C8LC/wAAAHMAAAAAAAAAAAACAsEP////Dv///w7///8KsbH/CIGB/wmj
-        o/8Impr/DNfX/w7///8O////Dv///wM4OP8AAAAzAAAAAAAAAAAAAABpCI2N/w7///8N7u7/AAAA7AAA
-        ABIAAABAAAAA+Qzf3/8O////Dv///w7+/v8CGhr/AAAAvQAAAFEAAAAAAAUFBgAJCf8Hfn7/AAUF7wAA
-        ABkAAAAAAAAAMQiAgP8O////Dv///w7///8O////DOnp/wAAWP8AAMT/AAAAlAAAAAAAAAAiAAAAeQAA
-        AAAAAAAAAAAAAAAAAGgM0tL/Dv///w7///8M3t7/DOPj/w////8ABjz/AAD//wAAbO4AAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAxB4GB/w7///8P////BDAw/wMmJv8N7e3/AAAH6wAAPd0AABzPAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAPUM4OD/Dv///w7///8O/f3/AhgY/wAAAC0AAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEOAAYG6AMqKv8DOTn/AQ8P/wAAADkAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAMQABAQMAAAAAAAAAAAAA
-        AAAAAAAA//8AAOAfAACADwAAgAcAAAAHAAAAAwAAAAMAAAAHAAAABwAAhgMAAI4AAAD+AAAA/gAAAP4H
-        AAD/DwAA//8AAA==
-</value>
-  </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>358, 17</value>
   </metadata>
   <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>123, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAMAEBAAAAEAIABoBAAANgAAACAgAAABACAAqBAAAJ4EAAAwMAAAAQAgAKglAABGFQAAKAAAABAA
