@@ -2,10 +2,10 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/DuckDNS/bin/Debug/DynDNS.cfg
 /DuckDNS/obj/**
 /DuckDNS/bin/Debug/DuckDNS.exe.config
 /DuckDNS/bin/Debug/DuckDNS.pdb
 /DuckDNS/bin/Debug/DuckDNS.vshost.exe
 /DuckDNS/bin/Debug/DuckDNS.vshost.exe.config
 /DuckDNS/bin/Debug/DuckDNS.vshost.exe.manifest
+/DuckDNS/bin/Debug/DuckDNS.cfg
