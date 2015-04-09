@@ -12,13 +12,38 @@ namespace DuckDNS
     {
         private DDns ddns = new DDns();
         private int intervalMS;
+        private bool allowshowdisplay = false;
+        private bool canClose = false;
 
         public Form1()
         {
             InitializeComponent();
             notifyIcon.Icon = Icon;
-            Top = Screen.PrimaryScreen.WorkingArea.Bottom - (Height + 25);
-            Left = Screen.PrimaryScreen.WorkingArea.Right - (Width + 25);            
+            Top = Screen.PrimaryScreen.WorkingArea.Bottom - (Height + 200);
+            Left = Screen.PrimaryScreen.WorkingArea.Right - (Width + 25);
+            ddns.Load();
+            tbDomain.Text = ddns.Domain;
+            tbToken.Text = ddns.Token;
+            cbInterval.Text = ddns.Interval;
+            ParseInterval();
+            RefreshTimer();
+            UpdateDNS();
+        }
+
+        protected override void SetVisibleCore(bool value)
+        {
+            base.SetVisibleCore(allowshowdisplay ? value : allowshowdisplay);
+        }
+
+        private void UpdateDNS()
+        {
+            bool update=ddns.Update();
+            lblInfo.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " (" + (update ? "OK" : "FAILED") + ")";
+            if (!update)
+            {
+                MessageBox.Show("Error updating domain","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                Show();
+            }
         }
 
         private void ParseInterval()
@@ -27,7 +52,7 @@ namespace DuckDNS
             int iint=0;
             bool error=false;
 
-            if (istr.Length==0 && !int.TryParse(istr.Substring(0, istr.Length - 1), out iint))
+            if (istr.Length==0 || !int.TryParse(istr.Substring(0, istr.Length - 1), out iint))
                 error = true;
             else
             {
@@ -51,17 +76,64 @@ namespace DuckDNS
                 }
             }
             cbInterval.BackColor = error ? Color.LightPink : SystemColors.Window;
+        }
 
+        private void RefreshTimer()
+        {
+            timer.Enabled = false;
+            timer.Interval = intervalMS;
+            timer.Enabled = true;
         }
 
         private void btOk_Click(object sender, EventArgs e)
         {
-            ddns.Update();
+            ddns.Domain = tbDomain.Text;
+            ddns.Token = tbToken.Text;
+            ddns.Interval = cbInterval.Text;
+            ddns.Save();
+            Hide();
+            UpdateDNS();
+            RefreshTimer();
         }
 
         private void cbInterval_TextChanged(object sender, EventArgs e)
         {
             ParseInterval();
+        }
+
+        private void notifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            allowshowdisplay = true;
+            Show();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing && !canClose)
+            {
+                e.Cancel = true;
+                Hide();
+                // Reset values (discard)
+                tbDomain.Text = ddns.Domain;
+                tbToken.Text = ddns.Token;
+                cbInterval.Text = ddns.Interval;
+            }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            UpdateDNS();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            canClose = true;
+            Close();
+        }
+
+        private void updateNowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateDNS();
         }
     }
 }

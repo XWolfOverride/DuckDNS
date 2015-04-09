@@ -12,6 +12,7 @@ namespace DuckDNS
         private const string FILENAME = "DynDNS.cfg";
         public string Domain;
         public string Token;
+        public string Interval;
 
         public bool Update(){
             string url="https://www.duckdns.org/update?domains="+Domain+"&token="+Token+"&ip=";
@@ -22,18 +23,20 @@ namespace DuckDNS
 
         public void Load()
         {
+            string[] data = null;
             if (File.Exists(FILENAME)) try
                 {
-                    string[] data = File.ReadAllLines(FILENAME);
-                    Domain = data.Length > 0 ? data[0] : "";
-                    Token = data.Length > 1 ? CharSwitch(data[1]) : "";
+                    data = File.ReadAllLines(FILENAME);
                 }
                 catch { }; //Silent read errors
+            Domain = data != null && data.Length > 0 ? data[0] : "";
+            Token = data != null && data.Length > 1 ? CharSwitch(data[1]) : "";
+            Interval = data != null && data.Length > 2 ? data[2] : "30m";
         }
 
         public void Save()
         {
-            string[] data = { Domain, CharSwitch(Token) };
+            string[] data = { Domain, CharSwitch(Token), Interval };
             try
             {
                 File.WriteAllLines(FILENAME, data);

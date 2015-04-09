@@ -40,13 +40,22 @@
             this.cbInterval = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblInfo = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.updateNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon
             // 
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "DuckDNS";
             this.notifyIcon.Visible = true;
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
             // 
             // btOk
             // 
@@ -57,6 +66,7 @@
             this.btOk.Size = new System.Drawing.Size(30, 102);
             this.btOk.TabIndex = 0;
             this.btOk.Text = "Ok";
+            this.toolTip1.SetToolTip(this.btOk, "Accept, Save and Check");
             this.btOk.UseVisualStyleBackColor = true;
             this.btOk.Click += new System.EventHandler(this.btOk_Click);
             // 
@@ -77,6 +87,7 @@
             this.tbDomain.Name = "tbDomain";
             this.tbDomain.Size = new System.Drawing.Size(191, 20);
             this.tbDomain.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.tbDomain, "DuckDNS domain to update");
             // 
             // label2
             // 
@@ -95,6 +106,7 @@
             this.tbToken.Name = "tbToken";
             this.tbToken.Size = new System.Drawing.Size(191, 20);
             this.tbToken.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.tbToken, "User Token");
             this.tbToken.UseSystemPasswordChar = true;
             // 
             // label3
@@ -127,7 +139,8 @@
             this.cbInterval.Name = "cbInterval";
             this.cbInterval.Size = new System.Drawing.Size(191, 21);
             this.cbInterval.TabIndex = 6;
-            this.cbInterval.Text = "30m";
+            this.toolTip1.SetToolTip(this.cbInterval, "Update interval (number and unit)\r\nUse a tailing letter to define time unit\r\ns fo" +
+        "r seconds.\r\nm for minutes.\r\nh for hours.\r\nd for days.");
             this.cbInterval.TextChanged += new System.EventHandler(this.cbInterval_TextChanged);
             // 
             // button1
@@ -147,6 +160,38 @@
             this.lblInfo.Size = new System.Drawing.Size(156, 23);
             this.lblInfo.TabIndex = 8;
             this.lblInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // timer
+            // 
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.updateNowToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.exitToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 76);
+            // 
+            // updateNowToolStripMenuItem
+            // 
+            this.updateNowToolStripMenuItem.Name = "updateNowToolStripMenuItem";
+            this.updateNowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.updateNowToolStripMenuItem.Text = "Update Now!";
+            this.updateNowToolStripMenuItem.Click += new System.EventHandler(this.updateNowToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -169,6 +214,8 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "DuckDNS";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,6 +233,12 @@
         private System.Windows.Forms.ComboBox cbInterval;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem updateNowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 
