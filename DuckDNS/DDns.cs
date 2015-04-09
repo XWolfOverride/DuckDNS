@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DuckDNS
 {
-    class _DDns
+    class DDns
     {
         public string Domain;
         public string Token;

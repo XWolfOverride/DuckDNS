@@ -10,7 +10,7 @@ namespace DuckDNS
 {
     public partial class Form1 : Form
     {
-        private _DDns ddns = new _DDns();
+        private DDns ddns = new DDns();
         private int intervalMS;
 
         public Form1()
