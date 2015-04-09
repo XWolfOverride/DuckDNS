@@ -1,0 +1,12 @@
+C:\Users\XWolfOverride\Desktop\C#\DuckDNS\DuckDNS\bin\Debug\DuckDNS.exe.config
+C:\Users\XWolfOverride\Desktop\C#\DuckDNS\DuckDNS\bin\Debug\DuckDNS.exe
+C:\Users\XWolfOverride\Desktop\C#\DuckDNS\DuckDNS\bin\Debug\DuckDNS.pdb
+C:\Users\XWolfOverride\Desktop\C#\DuckDNS\DuckDNS\obj\Debug\DuckDNS.csprojResolveAssemblyReference.cache
+C:\Users\XWolfOverride\Desktop\C#\DuckDNS\DuckDNS\obj\Debug\DuckDNS.Form1.resources
+C:\Users\XWolfOverride\Desktop\C#\DuckDNS\DuckDNS\obj\Debug\DuckDNS.Properties.Resources.resources
+C:\Users\XWolfOverride\Desktop\C#\DuckDNS\DuckDNS\obj\Debug\DuckDNS.csproj.GenerateResource.Cache
+C:\Users\XWolfOverride\Desktop\C#\DuckDNS\DuckDNS\obj\Debug\DuckDNS.exe
+C:\Users\XWolfOverride\Desktop\C#\DuckDNS\DuckDNS\obj\Debug\DuckDNS.pdb
+C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\bin\Debug\DuckDNS.exe.config
+C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\obj\Debug\DuckDNS.exe
+C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\obj\Debug\DuckDNS.pdb
