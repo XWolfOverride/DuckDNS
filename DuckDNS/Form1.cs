@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -137,6 +139,12 @@ namespace DuckDNS
         private void updateNowToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateDNS();
+        }
+
+        private void installStartupShortcutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string linkPath = Windows.GetStartupPath() + Path.DirectorySeparatorChar + "DuckDNS.lnk";
+            WShellLink.CreateLink(linkPath,"Duck DNS Updater",Assembly.GetExecutingAssembly().Location);
         }
     }
 }
