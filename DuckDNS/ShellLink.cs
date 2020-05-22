@@ -17,6 +17,7 @@ namespace DuckDNS
             // setup shortcut information
             link.SetDescription(description);
             link.SetPath(path);
+            link.SetWorkingDirectory(Path.GetDirectoryName(path));
 
             // save it
             IPersistFile file = (IPersistFile)link;
