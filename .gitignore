@@ -3,11 +3,5 @@
 ################################################################################
 
 /DuckDNS/obj/**
-/DuckDNS/bin/Debug/DuckDNS.exe.config
-/DuckDNS/bin/Debug/DuckDNS.pdb
-/DuckDNS/bin/Debug/DuckDNS.vshost.exe
-/DuckDNS/bin/Debug/DuckDNS.vshost.exe.config
-/DuckDNS/bin/Debug/DuckDNS.vshost.exe.manifest
-/DuckDNS/bin/Debug/DuckDNS.cfg
-/DuckDNS/bin/Debug/DuckDNS.zip
-/DuckDNS/bin/Debug/DuckDNS-1.0.zip
+/DuckDNS/bin/**
+/.vs

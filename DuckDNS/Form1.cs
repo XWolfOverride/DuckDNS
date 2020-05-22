@@ -19,6 +19,7 @@ namespace DuckDNS
         private bool canClose = false;
         private Icon icoTray = Resources.tray;
         private Icon icoTrayC = Resources.tray_checking;
+        private Icon icoTrayE = Resources.tray_error;
 
         public Form1()
         {
@@ -59,23 +60,26 @@ namespace DuckDNS
                 lblInfo.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " (" + (update ? "OK" : "FAILED") + ")";
                 if (!update)
                 {
-                    MessageBox.Show("Error updating Duck DNS domain", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Show();
+                    notifyIcon.Icon = icoTrayE;
+                    notifyIcon.ShowBalloonTip(5000, "Error updating", "Update of DuckDNS failed, check token and domain.", ToolTipIcon.Error);
                 }
+                else
+                    notifyIcon.Icon = icoTray;
             }
-            finally
+            catch (Exception e)
             {
-                notifyIcon.Icon = icoTray;
+                notifyIcon.Icon = icoTrayE;
+                notifyIcon.ShowBalloonTip(5000, "Error updating", "Error updating domain: " + e.Message, ToolTipIcon.Error);
             }
         }
 
         private void ParseInterval()
         {
             string istr = cbInterval.Text.ToLower();
-            int iint=0;
-            bool error=false;
+            int iint = 0;
+            bool error = false;
 
-            if (istr.Length==0 || !int.TryParse(istr.Substring(0, istr.Length - 1), out iint))
+            if (istr.Length == 0 || !int.TryParse(istr.Substring(0, istr.Length - 1), out iint))
                 error = true;
             else
             {
@@ -161,7 +165,7 @@ namespace DuckDNS
         private void installStartupShortcutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string linkPath = Windows.GetStartupPath() + Path.DirectorySeparatorChar + "DuckDNS.lnk";
-            WShellLink.CreateLink(linkPath,"Duck DNS Updater",Assembly.GetExecutingAssembly().Location);
+            WShellLink.CreateLink(linkPath, "Duck DNS Updater", Assembly.GetExecutingAssembly().Location);
         }
 
         private void button1_Click(object sender, EventArgs e)
