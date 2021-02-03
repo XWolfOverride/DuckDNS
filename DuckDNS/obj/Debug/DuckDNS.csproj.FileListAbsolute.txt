@@ -8,3 +8,14 @@ C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\obj\Debug\DuckDNS.csproj.Gen
 C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\obj\Debug\DuckDNS.exe
 C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\obj\Debug\DuckDNS.pdb
 C:\Users\XWolfOverride\Source\Repos\DuckDNS\DuckDNS\obj\Debug\DuckDNS.FAbout.resources
+E:\MyDocumentos2\Software2\DuckDNS\DuckDNS\bin\Debug\DuckDNS.exe.config
+E:\MyDocumentos2\Software2\DuckDNS\DuckDNS\bin\Debug\DuckDNS.exe
+E:\MyDocumentos2\Software2\DuckDNS\DuckDNS\bin\Debug\DuckDNS.pdb
+E:\MyDocumentos2\Software2\DuckDNS\DuckDNS\obj\Debug\DuckDNS.csprojAssemblyReference.cache
+E:\MyDocumentos2\Software2\DuckDNS\DuckDNS\obj\Debug\DuckDNS.FAbout.resources
+E:\MyDocumentos2\Software2\DuckDNS\DuckDNS\obj\Debug\DuckDNS.Form1.resources
+E:\MyDocumentos2\Software2\DuckDNS\DuckDNS\obj\Debug\DuckDNS.Properties.Resources.resources
+E:\MyDocumentos2\Software2\DuckDNS\DuckDNS\obj\Debug\DuckDNS.csproj.GenerateResource.cache
+E:\MyDocumentos2\Software2\DuckDNS\DuckDNS\obj\Debug\DuckDNS.csproj.CoreCompileInputs.cache
+E:\MyDocumentos2\Software2\DuckDNS\DuckDNS\obj\Debug\DuckDNS.exe
+E:\MyDocumentos2\Software2\DuckDNS\DuckDNS\obj\Debug\DuckDNS.pdb

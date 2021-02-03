@@ -40,7 +40,6 @@ namespace DuckDNS
 
         protected override void SetVisibleCore(bool value)
         {
-
             if (!allowshowdisplay)
             {
                 allowshowdisplay = true;
@@ -167,13 +166,26 @@ namespace DuckDNS
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Visible = false;
             FAbout.Execute();
+            Visible = true;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             icoTray.Dispose();
             icoTrayC.Dispose();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            canClose = true;
+            Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
