@@ -29,45 +29,48 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FAbout));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.lbBy = new System.Windows.Forms.Label();
+            this.pHeader = new System.Windows.Forms.Panel();
+            this.pTitleBar = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.panel4 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panelFooter = new System.Windows.Forms.Panel();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            this.pHeader.SuspendLayout();
+            this.pTitleBar.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panelFooter.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pbLogo
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(190, 94);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(92, 83);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pbLogo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
+            this.pbLogo.Location = new System.Drawing.Point(190, 114);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(92, 83);
+            this.pbLogo.TabIndex = 0;
+            this.pbLogo.TabStop = false;
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Calibri", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 28);
+            this.label1.Location = new System.Drawing.Point(13, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 26);
+            this.label1.Size = new System.Drawing.Size(265, 28);
             this.label1.TabIndex = 1;
             this.label1.Text = "A Simple DuckDNS Updater";
             // 
@@ -75,32 +78,33 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(236)))), ((int)(((byte)(179)))));
-            this.label2.Location = new System.Drawing.Point(268, 34);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Calibri", 14F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(223)))));
+            this.label2.Location = new System.Drawing.Point(284, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 17);
+            this.label2.Size = new System.Drawing.Size(48, 23);
             this.label2.TabIndex = 2;
-            this.label2.Text = "V. 2.0";
+            this.label2.Text = "v 2.1";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label3.Font = new System.Drawing.Font("Calibri", 9F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.label3.Location = new System.Drawing.Point(131, 197);
+            this.label3.Location = new System.Drawing.Point(3, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 15);
+            this.label3.Size = new System.Drawing.Size(171, 14);
             this.label3.TabIndex = 3;
             this.label3.Text = "You can see latest updates on";
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.linkLabel1.Location = new System.Drawing.Point(300, 196);
+            this.linkLabel1.Font = new System.Drawing.Font("Calibri", 9F);
+            this.linkLabel1.Location = new System.Drawing.Point(171, 2);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(45, 15);
+            this.linkLabel1.Size = new System.Drawing.Size(45, 14);
             this.linkLabel1.TabIndex = 4;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "GitHub";
@@ -110,49 +114,54 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(236)))), ((int)(((byte)(179)))));
-            this.label4.Location = new System.Drawing.Point(14, 58);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Calibri", 12F);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(223)))));
+            this.label4.Location = new System.Drawing.Point(14, 71);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 17);
+            this.label4.Size = new System.Drawing.Size(87, 19);
             this.label4.TabIndex = 5;
             this.label4.Text = "MIT License";
             // 
-            // label5
+            // lbBy
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.label5.Location = new System.Drawing.Point(366, 164);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 15);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "By XWolfOverride";
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbBy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(469, 88);
-            this.panel1.TabIndex = 11;
+            this.lbBy.Font = new System.Drawing.Font("Calibri", 9F);
+            this.lbBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.lbBy.Location = new System.Drawing.Point(5, 221);
+            this.lbBy.Name = "lbBy";
+            this.lbBy.Size = new System.Drawing.Size(463, 65);
+            this.lbBy.TabIndex = 7;
+            this.lbBy.Text = "by XWolfOverride, with the collaboration of GitHub Users:\r\nfullbanner, bugfix on " +
+    "startup link\r\nHenrique Mendoça, IPv6 support\r\nIgnacio - Innovo, UI with Material" +
+    " Design style\r\n\r\n";
             // 
-            // panel3
+            // pHeader
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.pHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.panel3.Controls.Add(this.button1);
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(469, 23);
-            this.panel3.TabIndex = 12;
+            this.pHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            this.pHeader.Controls.Add(this.pTitleBar);
+            this.pHeader.Controls.Add(this.label1);
+            this.pHeader.Controls.Add(this.label4);
+            this.pHeader.Controls.Add(this.label2);
+            this.pHeader.Location = new System.Drawing.Point(1, 1);
+            this.pHeader.Name = "pHeader";
+            this.pHeader.Size = new System.Drawing.Size(470, 100);
+            this.pHeader.TabIndex = 11;
+            // 
+            // pTitleBar
+            // 
+            this.pTitleBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.pTitleBar.Controls.Add(this.button1);
+            this.pTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.pTitleBar.Name = "pTitleBar";
+            this.pTitleBar.Size = new System.Drawing.Size(470, 27);
+            this.pTitleBar.TabIndex = 12;
+            this.pTitleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pTitleBar_MouseMove);
             // 
             // button1
             // 
@@ -161,11 +170,11 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button1.Location = new System.Drawing.Point(436, 1);
+            this.button1.Image = global::DuckDNS.Properties.Resources.close;
+            this.button1.Location = new System.Drawing.Point(440, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(28, 21);
+            this.button1.Size = new System.Drawing.Size(28, 23);
             this.button1.TabIndex = 2;
-            this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -179,7 +188,7 @@
             this.panel2.Controls.Add(this.button4);
             this.panel2.Location = new System.Drawing.Point(12, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(110, 23);
+            this.panel2.Size = new System.Drawing.Size(113, 23);
             this.panel2.TabIndex = 10;
             // 
             // button3
@@ -189,7 +198,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button3.Location = new System.Drawing.Point(46, 2);
+            this.button3.Location = new System.Drawing.Point(49, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(28, 18);
             this.button3.TabIndex = 1;
@@ -203,7 +212,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button2.Location = new System.Drawing.Point(77, 1);
+            this.button2.Location = new System.Drawing.Point(80, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(28, 21);
             this.button2.TabIndex = 2;
@@ -223,58 +232,60 @@
             this.button4.Text = "About";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // panel4
+            // panelFooter
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
-            this.panel4.Location = new System.Drawing.Point(0, 189);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(469, 1);
-            this.panel4.TabIndex = 12;
+            this.panelFooter.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.panelFooter.Controls.Add(this.label3);
+            this.panelFooter.Controls.Add(this.linkLabel1);
+            this.panelFooter.Location = new System.Drawing.Point(128, 306);
+            this.panelFooter.Name = "panelFooter";
+            this.panelFooter.Size = new System.Drawing.Size(217, 19);
+            this.panelFooter.TabIndex = 12;
             // 
             // FAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(469, 220);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(472, 326);
+            this.Controls.Add(this.panelFooter);
+            this.Controls.Add(this.pHeader);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.lbBy);
+            this.Controls.Add(this.pbLogo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FAbout";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FAbout_Paint);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            this.pHeader.ResumeLayout(false);
+            this.pHeader.PerformLayout();
+            this.pTitleBar.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panelFooter.ResumeLayout(false);
+            this.panelFooter.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lbBy;
+        private System.Windows.Forms.Panel pHeader;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pTitleBar;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panelFooter;
     }
 }

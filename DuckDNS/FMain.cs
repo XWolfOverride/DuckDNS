@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace DuckDNS
 {
-    public partial class Form1 : Form
+    public partial class FMain : Form
     {
         private DDns ddns = new DDns();
         private int intervalMS;
@@ -21,7 +21,7 @@ namespace DuckDNS
         private Icon icoTrayC = Resources.tray_checking;
         private Icon icoTrayE = Resources.tray_error;
 
-        public Form1()
+        public FMain()
         {
             InitializeComponent();
             notifyIcon.Icon = Icon;
@@ -190,6 +190,19 @@ namespace DuckDNS
         private void button3_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void pTitleBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Windows.DragWindow(Handle);
+            }
+        }
+
+        private void FMain_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(Windows.framePen, 0, 0, Size.Width-1, Size.Height-1);
         }
     }
 }

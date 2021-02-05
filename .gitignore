@@ -2,6 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/DuckDNS/obj/**
-/DuckDNS/bin/**
-/.vs
+DuckDNS/obj/**
+DuckDNS/bin/**
+.vs

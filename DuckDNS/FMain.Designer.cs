@@ -1,6 +1,6 @@
 ﻿namespace DuckDNS
 {
-    partial class Form1
+    partial class FMain
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMain));
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.updateNowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,18 +44,18 @@
             this.tbToken = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbInterval = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btAbout = new System.Windows.Forms.Button();
             this.lblInfo = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btClose = new System.Windows.Forms.Button();
+            this.btIconify = new System.Windows.Forms.Button();
+            this.pHeader = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.pTitleBar = new System.Windows.Forms.Panel();
             this.contextMenuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pHeader.SuspendLayout();
+            this.pTitleBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon
@@ -115,11 +115,11 @@
             this.btOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btOk.ForeColor = System.Drawing.Color.White;
-            this.btOk.Location = new System.Drawing.Point(435, 177);
+            this.btOk.Location = new System.Drawing.Point(451, 207);
             this.btOk.Name = "btOk";
             this.btOk.Size = new System.Drawing.Size(82, 31);
             this.btOk.TabIndex = 3;
-            this.btOk.Text = "OK";
+            this.btOk.Text = "Ok";
             this.toolTip1.SetToolTip(this.btOk, "Accept, Save and Check");
             this.btOk.UseVisualStyleBackColor = false;
             this.btOk.Click += new System.EventHandler(this.btOk_Click);
@@ -129,7 +129,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.label1.Location = new System.Drawing.Point(12, 116);
+            this.label1.Location = new System.Drawing.Point(12, 122);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 15);
             this.label1.TabIndex = 6;
@@ -141,9 +141,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDomain.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.tbDomain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.tbDomain.Location = new System.Drawing.Point(92, 113);
+            this.tbDomain.Location = new System.Drawing.Point(92, 119);
             this.tbDomain.Name = "tbDomain";
-            this.tbDomain.Size = new System.Drawing.Size(425, 21);
+            this.tbDomain.Size = new System.Drawing.Size(440, 21);
             this.tbDomain.TabIndex = 0;
             this.toolTip1.SetToolTip(this.tbDomain, "DuckDNS domain to update");
             // 
@@ -152,7 +152,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.label2.Location = new System.Drawing.Point(12, 150);
+            this.label2.Location = new System.Drawing.Point(12, 156);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 15);
             this.label2.TabIndex = 5;
@@ -164,9 +164,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tbToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.tbToken.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.tbToken.Location = new System.Drawing.Point(92, 147);
+            this.tbToken.Location = new System.Drawing.Point(92, 153);
             this.tbToken.Name = "tbToken";
-            this.tbToken.Size = new System.Drawing.Size(425, 21);
+            this.tbToken.Size = new System.Drawing.Size(441, 21);
             this.tbToken.TabIndex = 1;
             this.toolTip1.SetToolTip(this.tbToken, "User Token");
             this.tbToken.UseSystemPasswordChar = true;
@@ -176,7 +176,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.label3.Location = new System.Drawing.Point(12, 185);
+            this.label3.Location = new System.Drawing.Point(12, 191);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 15);
             this.label3.TabIndex = 4;
@@ -186,7 +186,6 @@
             // 
             this.cbInterval.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbInterval.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInterval.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.cbInterval.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.cbInterval.FormattingEnabled = true;
@@ -202,37 +201,39 @@
             "5h",
             "10h",
             "1d"});
-            this.cbInterval.Location = new System.Drawing.Point(92, 182);
+            this.cbInterval.Location = new System.Drawing.Point(92, 188);
             this.cbInterval.Name = "cbInterval";
-            this.cbInterval.Size = new System.Drawing.Size(217, 23);
+            this.cbInterval.Size = new System.Drawing.Size(233, 23);
             this.cbInterval.TabIndex = 2;
             this.toolTip1.SetToolTip(this.cbInterval, "Update interval (number and unit)\r\nUse a tailing letter to define time unit\r\ns fo" +
         "r seconds.\r\nm for minutes.\r\nh for hours.\r\nd for days.");
             this.cbInterval.TextChanged += new System.EventHandler(this.cbInterval_TextChanged);
             // 
-            // button1
+            // btAbout
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(117)))), ((int)(((byte)(117)))));
-            this.button1.Location = new System.Drawing.Point(414, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(52, 19);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "About";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btAbout.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btAbout.FlatAppearance.BorderSize = 0;
+            this.btAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btAbout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(117)))), ((int)(((byte)(117)))), ((int)(((byte)(117)))));
+            this.btAbout.Location = new System.Drawing.Point(432, 2);
+            this.btAbout.Name = "btAbout";
+            this.btAbout.Size = new System.Drawing.Size(52, 23);
+            this.btAbout.TabIndex = 0;
+            this.btAbout.Text = "About";
+            this.btAbout.UseVisualStyleBackColor = true;
+            this.btAbout.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblInfo
             // 
             this.lblInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.lblInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(236)))), ((int)(((byte)(179)))));
-            this.lblInfo.Location = new System.Drawing.Point(16, 62);
+            this.lblInfo.Font = new System.Drawing.Font("Calibri", 14F);
+            this.lblInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(223)))));
+            this.lblInfo.Location = new System.Drawing.Point(16, 67);
             this.lblInfo.Name = "lblInfo";
-            this.lblInfo.Size = new System.Drawing.Size(505, 23);
+            this.lblInfo.Size = new System.Drawing.Size(519, 23);
             this.lblInfo.TabIndex = 1;
             this.lblInfo.Text = "Please, complete your dynamic DNS info";
             // 
@@ -240,84 +241,85 @@
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // panel1
+            // btClose
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.lblInfo);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(534, 88);
-            this.panel1.TabIndex = 9;
+            this.btClose.FlatAppearance.BorderSize = 0;
+            this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btClose.Image = global::DuckDNS.Properties.Resources.close;
+            this.btClose.Location = new System.Drawing.Point(518, 2);
+            this.btClose.Name = "btClose";
+            this.btClose.Size = new System.Drawing.Size(28, 23);
+            this.btClose.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.btClose, "Close");
+            this.btClose.UseVisualStyleBackColor = true;
+            this.btClose.Click += new System.EventHandler(this.button2_Click);
             // 
-            // panel2
+            // btIconify
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btIconify.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(534, 23);
-            this.panel2.TabIndex = 7;
+            this.btIconify.FlatAppearance.BorderSize = 0;
+            this.btIconify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btIconify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btIconify.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
+            this.btIconify.Image = global::DuckDNS.Properties.Resources.iconify;
+            this.btIconify.Location = new System.Drawing.Point(487, 2);
+            this.btIconify.Name = "btIconify";
+            this.btIconify.Size = new System.Drawing.Size(28, 23);
+            this.btIconify.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.btIconify, "Close");
+            this.btIconify.UseVisualStyleBackColor = true;
+            this.btIconify.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // pHeader
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button2.Location = new System.Drawing.Point(501, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(28, 21);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "X";
-            this.toolTip1.SetToolTip(this.button2, "Close");
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.pHeader.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            this.pHeader.Controls.Add(this.label4);
+            this.pHeader.Controls.Add(this.pTitleBar);
+            this.pHeader.Controls.Add(this.lblInfo);
+            this.pHeader.Location = new System.Drawing.Point(1, 1);
+            this.pHeader.Name = "pHeader";
+            this.pHeader.Size = new System.Drawing.Size(548, 100);
+            this.pHeader.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.label4.Font = new System.Drawing.Font("Calibri", 19F);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(16, 32);
+            this.label4.Location = new System.Drawing.Point(13, 32);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(163, 24);
+            this.label4.Size = new System.Drawing.Size(207, 32);
             this.label4.TabIndex = 0;
             this.label4.Text = "DuckDNS Updater";
             // 
-            // button3
+            // pTitleBar
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button3.Location = new System.Drawing.Point(470, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(28, 18);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "-";
-            this.toolTip1.SetToolTip(this.button3, "Close");
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.pTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(160)))), ((int)(((byte)(0)))));
+            this.pTitleBar.Controls.Add(this.btIconify);
+            this.pTitleBar.Controls.Add(this.btClose);
+            this.pTitleBar.Controls.Add(this.btAbout);
+            this.pTitleBar.Location = new System.Drawing.Point(0, 0);
+            this.pTitleBar.Name = "pTitleBar";
+            this.pTitleBar.Size = new System.Drawing.Size(548, 27);
+            this.pTitleBar.TabIndex = 7;
+            this.pTitleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pTitleBar_MouseMove);
             // 
-            // Form1
+            // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(534, 220);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(550, 256);
+            this.Controls.Add(this.pHeader);
             this.Controls.Add(this.cbInterval);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbToken);
@@ -329,15 +331,16 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Form1";
+            this.Name = "FMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DuckDNS";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.FMain_Paint);
             this.contextMenuStrip1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.pHeader.ResumeLayout(false);
+            this.pHeader.PerformLayout();
+            this.pTitleBar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,7 +356,7 @@
         private System.Windows.Forms.TextBox tbToken;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbInterval;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btAbout;
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ToolTip toolTip1;
@@ -363,11 +366,11 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem installStartupShortcutToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pHeader;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel pTitleBar;
+        private System.Windows.Forms.Button btClose;
+        private System.Windows.Forms.Button btIconify;
     }
 }
 

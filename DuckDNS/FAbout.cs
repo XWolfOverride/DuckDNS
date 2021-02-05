@@ -32,5 +32,22 @@ namespace DuckDNS
         {
             Close();
         }
+
+        private void FAbout_Paint(object sender, PaintEventArgs e)
+        {
+            int w = Size.Width - 1;
+            int h = Size.Height - 1;
+            e.Graphics.DrawRectangle(Windows.framePen, 0, 0, w, h);
+            h -= 20;
+            e.Graphics.DrawLine(Windows.framePen, 3, h, w - 3, h);
+        }
+
+        private void pTitleBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                Windows.DragWindow(Handle);
+            }
+        }
     }
 }
