@@ -20,13 +20,12 @@ namespace DuckDNS
         private Icon icoTray = Resources.tray;
         private Icon icoTrayC = Resources.tray_checking;
         private Icon icoTrayE = Resources.tray_error;
+        private bool saveOrDie;
 
         public FMain()
         {
             InitializeComponent();
             notifyIcon.Icon = Icon;
-            //Top = Screen.PrimaryScreen.WorkingArea.Bottom - (Height + 200);
-            //Left = Screen.PrimaryScreen.WorkingArea.Right - (Width + 25);
             ddns.Load();
             tbDomain.Text = ddns.Domain;
             tbToken.Text = ddns.Token;
@@ -37,6 +36,7 @@ namespace DuckDNS
             allowshowdisplay = tbDomain.Text.Length == 0 || tbToken.Text.Length == 0;
             if (!allowshowdisplay)
                 UpdateDNS();
+            saveOrDie = false;
         }
 
         protected override void SetVisibleCore(bool value)
@@ -57,7 +57,7 @@ namespace DuckDNS
             {
                 notifyIcon.Icon = icoTrayC;
                 bool update = ddns.Update();
-                lblInfo.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " (" + (update ? "OK" : "FAILED") + ")";
+                lblInfo.Text = "Last update on "+ DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " (" + (update ? "OK" : "FAILED") + ")";
                 if (!update)
                 {
                     notifyIcon.Icon = icoTrayE;
@@ -76,7 +76,7 @@ namespace DuckDNS
         private void ParseInterval()
         {
             string istr = cbInterval.Text.ToLower();
-            int iint = 0;
+            int iint;
             bool error = false;
 
             if (istr.Length == 0 || !int.TryParse(istr.Substring(0, istr.Length - 1), out iint))
@@ -112,12 +112,18 @@ namespace DuckDNS
             timer.Enabled = true;
         }
 
-        private void btOk_Click(object sender, EventArgs e)
+        private void SaveConf()
         {
             ddns.Domain = tbDomain.Text;
             ddns.Token = tbToken.Text;
             ddns.Interval = cbInterval.Text;
-            ddns.Save();
+            if (!ddns.Save())
+                notifyIcon.ShowBalloonTip(3000, "Error saving", "The configuration can not be saved, check if the filesystem have write rights for the user '" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + "'.", ToolTipIcon.Error);
+        }
+
+        private void btOk_Click(object sender, EventArgs e)
+        {
+            SaveConf();
             Hide();
             UpdateDNS();
             RefreshTimer();
@@ -126,6 +132,7 @@ namespace DuckDNS
         private void cbInterval_TextChanged(object sender, EventArgs e)
         {
             ParseInterval();
+            saveOrDie = true;
         }
 
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
@@ -139,10 +146,6 @@ namespace DuckDNS
             {
                 e.Cancel = true;
                 Hide();
-                // Reset values (discard)
-                tbDomain.Text = ddns.Domain;
-                tbToken.Text = ddns.Token;
-                cbInterval.Text = ddns.Interval;
             }
         }
 
@@ -168,41 +171,50 @@ namespace DuckDNS
             WShellLink.CreateLink(linkPath, "Duck DNS Updater", Assembly.GetExecutingAssembly().Location);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Visible = false;
-            FAbout.Execute();
-            Visible = true;
-        }
-
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             icoTray.Dispose();
             icoTrayC.Dispose();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void pTitleBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                Windows.DragWindow(Handle);
+        }
+
+        private void FMain_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(Windows.framePen, 0, 0, Size.Width - 1, Size.Height - 1);
+        }
+
+        private void btAbout_Click(object sender, EventArgs e)
+        {
+            Visible = false;
+            FAbout.Execute();
+            Visible = true;
+        }
+
+        private void btIconify_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btClose_Click(object sender, EventArgs e)
         {
             canClose = true;
             Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void valueChanged(object sender, EventArgs e)
         {
-            Close();
+            saveOrDie = true;
         }
 
-        private void pTitleBar_MouseMove(object sender, MouseEventArgs e)
+        private void FMain_Deactivate(object sender, EventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                Windows.DragWindow(Handle);
-            }
-        }
-
-        private void FMain_Paint(object sender, PaintEventArgs e)
-        {
-            e.Graphics.DrawRectangle(Windows.framePen, 0, 0, Size.Width-1, Size.Height-1);
+            if (saveOrDie)
+                SaveConf();
         }
     }
 }

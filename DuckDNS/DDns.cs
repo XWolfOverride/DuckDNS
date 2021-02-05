@@ -16,7 +16,7 @@ namespace DuckDNS
         public string Domain;
         public string Token;
         public string Interval;
-        public bool OwnResolveOfIPv6;
+        public bool OwnResolveOfIPs;
         private WebClient cli = new WebClient();
         private string confPath;
 
@@ -26,48 +26,38 @@ namespace DuckDNS
         /// <returns>Boolean value whether it suceeds to update the subdomain IP address</returns>
         public bool Update()
         {
-            //Updating IPv4
-            string urlIPv4 = "https://www.duckdns.org/update?domains=" + Domain + "&token=" + Token + "&ip=";
-            string dataIPv4 = cli.DownloadString(urlIPv4);
-
-            //Updating IPv6, thanks to Henriquemcc + version with DuckDNS address resolution.
-            string urlIPv6 = "https://www.duckdns.org/update?domains=" + Domain + "&token=" + Token + "&ipv6=" + (OwnResolveOfIPv6 ? getIPv6() : "");
-            string dataIPv6 = cli.DownloadString(urlIPv6);
-
-            return (dataIPv4 == "OK" || dataIPv6 == "OK");
+            string ipv4 = "";
+            string ipv6 = "";
+            if (OwnResolveOfIPs)
+                getIPs(out ipv4, out ipv6);
+            string url = "https://www.duckdns.org/update?domains=" + Domain + "&token=" + Token + "&ip=" + ipv4 + "&ipv6=" + ipv6;
+            return cli.DownloadString(url) == "OK";
         }
 
         /// <summary>
         /// This method gets the current public IPv6 addresses of the machine on which it is running.
         /// </summary>
         /// <returns>An ArrayList containing public IPv6 addresses.</returns>
-        private string getIPv6()
+        private void getIPs(out string ipv4, out string ipv6)
         {
-            //Creating the ArrayList.
-            List<string> IPv6Addresses = new List<string>();
-
-            //Verifying if the Operating System supports IPv6.
-            if (Socket.OSSupportsIPv6)
+            ipv4 = "";
+            ipv6 = "";
+            try
             {
-                try
+                IPHostEntry heserver = Dns.GetHostEntry(Dns.GetHostName());
+                foreach (IPAddress curAdd in heserver.AddressList)
                 {
-                    //Getting IP addresses.
-                    IPHostEntry heserver = Dns.GetHostEntry(Dns.GetHostName());
-                    //Finding public IPv6 addresses.
-                    foreach (IPAddress curAdd in heserver.AddressList)
-                    {
-                        if (curAdd.AddressFamily.ToString() == ProtocolFamily.InterNetworkV6.ToString() && (!curAdd.IsIPv6Multicast) && (!curAdd.IsIPv6LinkLocal) && (!curAdd.IsIPv6SiteLocal))
-                        {
-                            //Adding the adress to the ArrayList.
-                            IPv6Addresses.Add(curAdd.ToString());
-                        }
-                    }
-                }
-                catch
-                {
+                    if (ipv6.Length == 0 && curAdd.AddressFamily == AddressFamily.InterNetworkV6 && (!curAdd.IsIPv6Multicast) && (!curAdd.IsIPv6LinkLocal) && (!curAdd.IsIPv6SiteLocal))
+                        ipv6 = curAdd.ToString();
+                    if (ipv4.Length == 0 && curAdd.AddressFamily == AddressFamily.InterNetwork)
+                        ipv4 = curAdd.ToString();
+                    if (ipv4.Length > 0 && ipv6.Length > 0)
+                        return;
                 }
             }
-            return IPv6Addresses.Count > 0 ? IPv6Addresses[0] : null;
+            catch
+            {
+            }
         }
 
         private string getConfPath()
@@ -98,17 +88,21 @@ namespace DuckDNS
             Domain = data != null && data.Length > 0 ? data[0] : "";
             Token = data != null && data.Length > 1 ? CharSwitch(data[1]) : "";
             Interval = data != null && data.Length > 2 ? data[2] : "30m";
-            OwnResolveOfIPv6 = data != null && data.Length > 3 ? data[3] == "OwnResolveIpv6" : false;
+            OwnResolveOfIPs = data != null && data.Length > 3 ? data[3] == "OwnResolveIpv6" || data[3] == "OwnResolveIPs" : false;
         }
 
-        public void Save()
+        public bool Save()
         {
-            string[] data = { Domain, CharSwitch(Token), Interval, OwnResolveOfIPv6 ? "OwnResolveIpv6" : "DuckResolveIpv6" };
+            string[] data = { Domain, CharSwitch(Token), Interval, OwnResolveOfIPs ? "OwnResolveIPs" : "DuckResolveIPs" };
             try
             {
                 File.WriteAllLines(getConfPath(), data);
+                return true;
             }
-            catch { }; //Silent write errors (for read-only fs)
+            catch
+            {
+                return false;
+            }
         }
 
         private string CharSwitch(string str)

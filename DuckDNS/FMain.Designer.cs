@@ -47,9 +47,10 @@
             this.btAbout = new System.Windows.Forms.Button();
             this.lblInfo = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.btClose = new System.Windows.Forms.Button();
             this.btIconify = new System.Windows.Forms.Button();
+            this.btSettings = new System.Windows.Forms.Button();
             this.pHeader = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.pTitleBar = new System.Windows.Forms.Panel();
@@ -113,14 +114,14 @@
             this.btOk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
             this.btOk.FlatAppearance.BorderSize = 0;
             this.btOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btOk.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btOk.ForeColor = System.Drawing.Color.White;
             this.btOk.Location = new System.Drawing.Point(451, 207);
             this.btOk.Name = "btOk";
             this.btOk.Size = new System.Drawing.Size(82, 31);
             this.btOk.TabIndex = 3;
             this.btOk.Text = "Ok";
-            this.toolTip1.SetToolTip(this.btOk, "Accept, Save and Check");
+            this.toolTip.SetToolTip(this.btOk, "Accept, Save and Check");
             this.btOk.UseVisualStyleBackColor = false;
             this.btOk.Click += new System.EventHandler(this.btOk_Click);
             // 
@@ -143,9 +144,9 @@
             this.tbDomain.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.tbDomain.Location = new System.Drawing.Point(92, 119);
             this.tbDomain.Name = "tbDomain";
-            this.tbDomain.Size = new System.Drawing.Size(440, 21);
+            this.tbDomain.Size = new System.Drawing.Size(441, 21);
             this.tbDomain.TabIndex = 0;
-            this.toolTip1.SetToolTip(this.tbDomain, "DuckDNS domain to update");
+            this.toolTip.SetToolTip(this.tbDomain, "DuckDNS domain to update");
             // 
             // label2
             // 
@@ -168,8 +169,9 @@
             this.tbToken.Name = "tbToken";
             this.tbToken.Size = new System.Drawing.Size(441, 21);
             this.tbToken.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.tbToken, "User Token");
+            this.toolTip.SetToolTip(this.tbToken, "User Token (see DuckDNS user page)");
             this.tbToken.UseSystemPasswordChar = true;
+            this.tbToken.TextChanged += new System.EventHandler(this.valueChanged);
             // 
             // label3
             // 
@@ -205,7 +207,7 @@
             this.cbInterval.Name = "cbInterval";
             this.cbInterval.Size = new System.Drawing.Size(233, 23);
             this.cbInterval.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.cbInterval, "Update interval (number and unit)\r\nUse a tailing letter to define time unit\r\ns fo" +
+            this.toolTip.SetToolTip(this.cbInterval, "Update interval (number and unit)\r\nUse a tailing letter to define time unit\r\ns fo" +
         "r seconds.\r\nm for minutes.\r\nh for hours.\r\nd for days.");
             this.cbInterval.TextChanged += new System.EventHandler(this.cbInterval_TextChanged);
             // 
@@ -223,7 +225,7 @@
             this.btAbout.TabIndex = 0;
             this.btAbout.Text = "About";
             this.btAbout.UseVisualStyleBackColor = true;
-            this.btAbout.Click += new System.EventHandler(this.button1_Click);
+            this.btAbout.Click += new System.EventHandler(this.btAbout_Click);
             // 
             // lblInfo
             // 
@@ -249,14 +251,14 @@
             this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.btClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.btClose.Image = global::DuckDNS.Properties.Resources.close;
+            this.btClose.Image = ((System.Drawing.Image)(resources.GetObject("btClose.Image")));
             this.btClose.Location = new System.Drawing.Point(518, 2);
             this.btClose.Name = "btClose";
             this.btClose.Size = new System.Drawing.Size(28, 23);
             this.btClose.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.btClose, "Close");
+            this.toolTip.SetToolTip(this.btClose, "Close");
             this.btClose.UseVisualStyleBackColor = true;
-            this.btClose.Click += new System.EventHandler(this.button2_Click);
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
             // btIconify
             // 
@@ -271,9 +273,26 @@
             this.btIconify.Name = "btIconify";
             this.btIconify.Size = new System.Drawing.Size(28, 23);
             this.btIconify.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.btIconify, "Close");
+            this.toolTip.SetToolTip(this.btIconify, "Close");
             this.btIconify.UseVisualStyleBackColor = true;
-            this.btIconify.Click += new System.EventHandler(this.button3_Click);
+            this.btIconify.Click += new System.EventHandler(this.btIconify_Click);
+            // 
+            // btSettings
+            // 
+            this.btSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(125)))), ((int)(((byte)(139)))));
+            this.btSettings.FlatAppearance.BorderSize = 0;
+            this.btSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.btSettings.ForeColor = System.Drawing.Color.White;
+            this.btSettings.Image = global::DuckDNS.Properties.Resources.settings;
+            this.btSettings.Location = new System.Drawing.Point(414, 207);
+            this.btSettings.Name = "btSettings";
+            this.btSettings.Size = new System.Drawing.Size(31, 31);
+            this.btSettings.TabIndex = 10;
+            this.toolTip.SetToolTip(this.btSettings, "Advanced settings");
+            this.btSettings.UseVisualStyleBackColor = false;
+            this.btSettings.Visible = false;
             // 
             // pHeader
             // 
@@ -319,6 +338,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(550, 256);
+            this.Controls.Add(this.btSettings);
             this.Controls.Add(this.pHeader);
             this.Controls.Add(this.cbInterval);
             this.Controls.Add(this.label3);
@@ -334,6 +354,7 @@
             this.Name = "FMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DuckDNS";
+            this.Deactivate += new System.EventHandler(this.FMain_Deactivate);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FMain_Paint);
@@ -359,7 +380,7 @@
         private System.Windows.Forms.Button btAbout;
         private System.Windows.Forms.Label lblInfo;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem updateNowToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -371,6 +392,7 @@
         private System.Windows.Forms.Panel pTitleBar;
         private System.Windows.Forms.Button btClose;
         private System.Windows.Forms.Button btIconify;
+        private System.Windows.Forms.Button btSettings;
     }
 }
 

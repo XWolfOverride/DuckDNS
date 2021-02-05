@@ -93,6 +93,7 @@
   <ItemGroup>
     <Content Include="DuckDNS.ico" />
     <Content Include="DuckDNS2.ico" />
+    <None Include="Resources\settings.png" />
     <None Include="Resources\iconify.png" />
     <None Include="Resources\close.png" />
     <None Include="Resources\tray_checking.ico" />
