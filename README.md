@@ -5,11 +5,13 @@ This updater tries to be easy to use and ready for advanced users.
 
 ## Easy mode
 ![](res/cap/21-main.png)
+
 Initial screen.
 
 The first time the updater opens shows this screen where you can set the token and the domain.
 
 Get both data from your Duck DNS account webpage:
+
 ![](res/cap/DuckDNS-page.png)
 
 Set the update interval from the list or write your own.
@@ -18,9 +20,12 @@ Clicking OK will sve the configuration, hide as Tray icon / Notification area an
 
 ## Updater status
 The Tray icon have 3 status:
-Yellow: ![](res/tray.ico) indicates all is right and updates are correct.
-Blue: ![](res/tray_checking.ico) indicates that an update call is being processed.
-Red: ![](res/tray_error.ico) indicates some error updating domains.
+
+* Yellow: ![](res/tray.ico) indicates all is right and updates are correct.
+
+* Blue: ![](res/tray_checking.ico) indicates that an update call is being processed.
+
+* Red: ![](res/tray_error.ico) indicates some error updating domains.
 
 In the red case a balloon will appear with information about the error.
 
@@ -32,18 +37,20 @@ Click with the secondary mouse button will show a menu with tree options:
 
 ![](res/cap/21-menu.png)
 
-Update Now! > Forces a domain update round and reset intervals.
-Install Startup Shortcut > Creates a shortcut to start the updater on at boot.
-Exit > Closes DuckDNS updater.
+* Update Now! > Forces a domain update round and reset intervals.
+* Install Startup Shortcut > Creates a shortcut to start the updater on at boot.
+* Exit > Closes DuckDNS updater.
 
 ## Advanced mode
 
 ![](res/cap/21-advanced.png)
+
 Main screen in advanced mode.
 
 For more configuration options use the gear button and enable the multi domains mode.
 
 ![](res/cap/21-settings.png)
+
 Settings screen.
 
 Add and remove domains in the list with the buttons at the bottom left and double click for edition.
