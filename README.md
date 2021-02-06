@@ -22,9 +22,7 @@ Clicking OK will sve the configuration, hide as Tray icon / Notification area an
 The Tray icon have 3 status:
 
 * Yellow: ![](res/tray.ico) indicates all is right and updates are correct.
-
 * Blue: ![](res/tray_checking.ico) indicates that an update call is being processed.
-
 * Red: ![](res/tray_error.ico) indicates some error updating domains.
 
 In the red case a balloon will appear with information about the error.
