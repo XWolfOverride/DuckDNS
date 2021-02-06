@@ -47,6 +47,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DDns.cs" />
+    <Compile Include="FEditDomain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FEditDomain.Designer.cs">
+      <DependentUpon>FEditDomain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FSettings.Designer.cs">
+      <DependentUpon>FSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="FAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +75,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShellLink.cs" />
     <Compile Include="Windows.cs" />
+    <EmbeddedResource Include="FEditDomain.resx">
+      <DependentUpon>FEditDomain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FSettings.resx">
+      <DependentUpon>FSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FAbout.resx">
       <DependentUpon>FAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +111,8 @@
   <ItemGroup>
     <Content Include="DuckDNS.ico" />
     <Content Include="DuckDNS2.ico" />
+    <None Include="Resources\remove.png" />
+    <None Include="Resources\add.png" />
     <None Include="Resources\settings.png" />
     <None Include="Resources\iconify.png" />
     <None Include="Resources\close.png" />

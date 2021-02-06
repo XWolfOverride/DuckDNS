@@ -147,6 +147,7 @@
             this.tbDomain.Size = new System.Drawing.Size(441, 21);
             this.tbDomain.TabIndex = 0;
             this.toolTip.SetToolTip(this.tbDomain, "DuckDNS domain to update");
+            this.tbDomain.TextChanged += new System.EventHandler(this.valueChanged);
             // 
             // label2
             // 
@@ -292,7 +293,7 @@
             this.btSettings.TabIndex = 10;
             this.toolTip.SetToolTip(this.btSettings, "Advanced settings");
             this.btSettings.UseVisualStyleBackColor = false;
-            this.btSettings.Visible = false;
+            this.btSettings.Click += new System.EventHandler(this.btSettings_Click);
             // 
             // pHeader
             // 
@@ -334,8 +335,8 @@
             // 
             // FMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(550, 256);
             this.Controls.Add(this.btSettings);
@@ -347,6 +348,7 @@
             this.Controls.Add(this.tbDomain);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btOk);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

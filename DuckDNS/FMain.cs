@@ -27,16 +27,11 @@ namespace DuckDNS
             InitializeComponent();
             notifyIcon.Icon = Icon;
             ddns.Load();
-            tbDomain.Text = ddns.Domain;
-            tbToken.Text = ddns.Token;
-            cbInterval.Text = ddns.Interval;
-            ParseInterval();
-            RefreshTimer();
+            LoadConf();
             notifyIcon.Icon = icoTray;
             allowshowdisplay = tbDomain.Text.Length == 0 || tbToken.Text.Length == 0;
             if (!allowshowdisplay)
                 UpdateDNS();
-            saveOrDie = false;
         }
 
         protected override void SetVisibleCore(bool value)
@@ -56,12 +51,17 @@ namespace DuckDNS
             try
             {
                 notifyIcon.Icon = icoTrayC;
-                bool update = ddns.Update();
-                lblInfo.Text = "Last update on "+ DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " (" + (update ? "OK" : "FAILED") + ")";
-                if (!update)
+                List<string> msg = new List<string>();
+                ddns.Update(msg);
+                lblInfo.Text = "Last update on " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + " (" + (msg.Count == 0 ? "OK" : "FAILED") + ")";
+                if (msg.Count > 0)
                 {
+                    string tmsg = "Update of DuckDNS failed, check token and domain:\r\n";
+                    foreach (string s in msg)
+                        tmsg += s + "\r\n";
+
                     notifyIcon.Icon = icoTrayE;
-                    notifyIcon.ShowBalloonTip(5000, "Error updating", "Update of DuckDNS failed, check token and domain.", ToolTipIcon.Error);
+                    notifyIcon.ShowBalloonTip(5000, "Error", tmsg, ToolTipIcon.Error);
                 }
                 else
                     notifyIcon.Icon = icoTray;
@@ -108,19 +108,47 @@ namespace DuckDNS
         private void RefreshTimer()
         {
             timer.Enabled = false;
+            if (intervalMS == 0)
+                return;
             timer.Interval = intervalMS;
             timer.Enabled = true;
         }
 
-        private void SaveConf()
+        private void SaveConf(bool partial = false)
         {
-            ddns.Domain = tbDomain.Text;
+            if (tbDomain.Enabled)
+                ddns.Domain = tbDomain.Text;
+            else
+                ddns.Domain = "*";
             ddns.Token = tbToken.Text;
             ddns.Interval = cbInterval.Text;
+            if (partial)
+                return;
             if (!ddns.Save())
                 notifyIcon.ShowBalloonTip(3000, "Error saving", "The configuration can not be saved, check if the filesystem have write rights for the user '" + System.Security.Principal.WindowsIdentity.GetCurrent().Name + "'.", ToolTipIcon.Error);
+            saveOrDie = false;
         }
 
+        private void LoadConf(bool partial = false)
+        {
+            if (ddns.Domain == "*")
+            {
+                tbDomain.Text = "<multiple configuration>";
+                tbDomain.Enabled = false;
+            }
+            else
+            {
+                tbDomain.Text = ddns.Domain;
+                tbDomain.Enabled = true;
+            }
+            if (partial)
+                return;
+            tbToken.Text = ddns.Token;
+            cbInterval.Text = ddns.Interval;
+            ParseInterval();
+            RefreshTimer();
+            saveOrDie = false;
+        }
         private void btOk_Click(object sender, EventArgs e)
         {
             SaveConf();
@@ -215,6 +243,14 @@ namespace DuckDNS
         {
             if (saveOrDie)
                 SaveConf();
+        }
+
+        private void btSettings_Click(object sender, EventArgs e)
+        {
+            SaveConf(true);
+            FSettings.Execute(ddns);
+            LoadConf(true);
+            saveOrDie = true;
         }
     }
 }

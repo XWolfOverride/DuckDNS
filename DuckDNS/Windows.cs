@@ -23,6 +23,9 @@ namespace DuckDNS
 
         [DllImport("shell32.dll")]
         private static extern bool SHGetSpecialFolderPath(IntPtr hwndOwner, [Out] StringBuilder lpszPath, int nFolder, bool fCreate);
+        
+        [DllImport("user32.dll")]
+        public static extern bool SetProcessDPIAware();
 
         #endregion
 
