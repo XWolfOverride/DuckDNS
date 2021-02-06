@@ -3,6 +3,8 @@ A simple DuckDNS updater for Windows in C#
 
 This updater tries to be easy to use and ready for advanced users.
 
+Download on the [Releases page](https://github.com/XWolfOverride/DuckDNS/releases).
+
 ## Easy mode
 ![](res/cap/21-main.png)
 
