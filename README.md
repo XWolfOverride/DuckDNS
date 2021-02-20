@@ -58,6 +58,7 @@ Add and remove domains in the list with the buttons at the bottom left and doubl
 ## Domain item edition
 
 ![](res/cap/21-edition.png)
+
 Domain editor screen.
 
 In this screen you can edit the domain name and the IP resolution technique.

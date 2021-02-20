@@ -47,6 +47,8 @@
             this.lbRModeInfo = new System.Windows.Forms.Label();
             this.lbRValue = new System.Windows.Forms.Label();
             this.tbRValue = new System.Windows.Forms.TextBox();
+            this.cbIP = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.pHeader.SuspendLayout();
             this.pTitleBar.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -178,7 +180,7 @@
             this.btOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btOk.Font = new System.Drawing.Font("Calibri Light", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btOk.ForeColor = System.Drawing.Color.White;
-            this.btOk.Location = new System.Drawing.Point(263, 257);
+            this.btOk.Location = new System.Drawing.Point(263, 294);
             this.btOk.Name = "btOk";
             this.btOk.Size = new System.Drawing.Size(82, 31);
             this.btOk.TabIndex = 19;
@@ -253,12 +255,34 @@
             this.tbRValue.Size = new System.Drawing.Size(261, 20);
             this.tbRValue.TabIndex = 18;
             // 
+            // cbIP
+            // 
+            this.cbIP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbIP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbIP.FormattingEnabled = true;
+            this.cbIP.Location = new System.Drawing.Point(84, 255);
+            this.cbIP.Name = "cbIP";
+            this.cbIP.Size = new System.Drawing.Size(261, 21);
+            this.cbIP.TabIndex = 21;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 258);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Bind to IP:";
+            // 
             // FEditDomain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(364, 309);
+            this.ClientSize = new System.Drawing.Size(364, 346);
+            this.Controls.Add(this.cbIP);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btOk);
             this.Controls.Add(this.tbRValue);
             this.Controls.Add(this.lbRValue);
@@ -305,5 +329,7 @@
         private System.Windows.Forms.Label lbRValue;
         private System.Windows.Forms.TextBox tbRValue;
         private System.Windows.Forms.Button btOk;
+        private System.Windows.Forms.ComboBox cbIP;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -23,7 +25,7 @@ namespace DuckDNS
 
         [DllImport("shell32.dll")]
         private static extern bool SHGetSpecialFolderPath(IntPtr hwndOwner, [Out] StringBuilder lpszPath, int nFolder, bool fCreate);
-        
+
         [DllImport("user32.dll")]
         public static extern bool SetProcessDPIAware();
 
@@ -44,5 +46,36 @@ namespace DuckDNS
             SendMessage(handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
         }
 
+        public static List<IpInfo> ListInterfacesIPs()
+        {
+            List<IpInfo> result = new List<IpInfo>();
+            foreach (NetworkInterface item in NetworkInterface.GetAllNetworkInterfaces())
+                if (item.NetworkInterfaceType != NetworkInterfaceType.Loopback && item.OperationalStatus == OperationalStatus.Up)
+                    foreach (UnicastIPAddressInformation ip in item.GetIPProperties().UnicastAddresses)
+                        if (ip.Address.AddressFamily == AddressFamily.InterNetwork)
+                            result.Add(new IpInfo(item, ip.Address.ToString()));
+            return result;
+        }
+    }
+
+    class IpInfo
+    {
+        private NetworkInterface iface;
+        private string ip;
+
+        public IpInfo(NetworkInterface iface, string ip)
+        {
+            this.iface = iface;
+            this.ip = ip;
+        }
+
+        public override string ToString()
+        {
+            return iface.Name + ": " + ip;
+        }
+
+        public string InterfaceName { get { return iface.Name; } }
+        public NetworkInterfaceType InterfaceType { get { return iface.NetworkInterfaceType; } }
+        public string Address { get { return ip; } }
     }
 }

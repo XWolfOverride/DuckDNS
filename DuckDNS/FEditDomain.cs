@@ -32,6 +32,10 @@ namespace DuckDNS
             cbResolve.Items.Clear();
             foreach (DDnsResolutionMode rm in Enum.GetValues(typeof(DDnsResolutionMode)))
                 cbResolve.Items.Add(rm);
+            cbIP.Items.Clear();
+            cbIP.Items.Add("<any>");
+            foreach (IpInfo ip in Windows.ListInterfacesIPs())
+                cbIP.Items.Add(ip);
         }
 
         private void LoadData()
@@ -39,6 +43,13 @@ namespace DuckDNS
             tbName.Text = lbName.Text = d.Domain;
             cbResolve.SelectedItem = d.ResolutionMode;
             tbRValue.Text = d.ResolutionValue;
+            string ip = d.BindIP;
+            if (string.IsNullOrEmpty(ip))
+                cbIP.SelectedIndex = 0;
+            else
+                foreach (object o in cbIP.Items)
+                    if ((o is IpInfo) && ((IpInfo)o).Address == ip)
+                        cbIP.SelectedItem = o;
         }
 
         public void SaveData()
@@ -46,6 +57,7 @@ namespace DuckDNS
             d.Domain = tbName.Text;
             d.ResolutionMode = (DDnsResolutionMode)cbResolve.SelectedItem;
             d.ResolutionValue = tbRValue.Text;
+            d.BindIP = cbIP.SelectedIndex <= 0 ? "" : ((IpInfo)cbIP.SelectedItem).Address;
         }
 
         private void LookNFeel()

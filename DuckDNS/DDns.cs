@@ -13,7 +13,7 @@ namespace DuckDNS
     class DDns
     {
         private const string FILENAME = "DuckDNS.cfg";
-        private WebClient cli = new WebClient();
+        private WebClient cli;
         private string confPath;
 
         /// <summary>
@@ -76,7 +76,26 @@ namespace DuckDNS
                     return;
                 }
                 string url = "https://www.duckdns.org/update?domains=" + d.Domain + "&token=" + Token + "&ip=" + ipv4 + "&ipv6=" + ipv6;
-                string ret = cli.DownloadString(url);
+                string ret;
+                if (!string.IsNullOrEmpty(d.BindIP))
+                {
+                    HttpWebRequest rq = (HttpWebRequest)WebRequest.Create(url);
+                    rq.ServicePoint.BindIPEndPointDelegate = (sp, remoteEndPoint, retryCount) =>
+                    {
+                        return new IPEndPoint(IPAddress.Parse(d.BindIP), 0);
+                    };
+                    rq.KeepAlive = false;
+                    using (WebResponse response = rq.GetResponse())
+                    using (Stream s = response.GetResponseStream())
+                    using (StreamReader sr = new StreamReader(s, Encoding.ASCII))
+                        ret = sr.ReadLine();
+                }
+                else
+                {
+                    if (cli == null)
+                        cli = new WebClient();
+                    ret = cli.DownloadString(url);
+                }
                 if (ret != "OK")
                     messages.Add(d.Domain + ": Failed");
             }
@@ -226,6 +245,8 @@ namespace DuckDNS
         public string Domain { get; set; }
         public DDnsResolutionMode ResolutionMode { get; set; }
         public string ResolutionValue { get; set; }
+
+        public string BindIP { get; set; }
     }
 
     enum DDnsResolutionMode
