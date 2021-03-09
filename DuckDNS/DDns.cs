@@ -13,8 +13,15 @@ namespace DuckDNS
     class DDns
     {
         private const string FILENAME = "DuckDNS.cfg";
-        private WebClient cli;
+        private WebClient wclient;
         private string confPath;
+
+        private WebClient Cli()
+        {
+            if (wclient == null)
+                wclient = new WebClient();
+            return wclient;
+        }
 
         /// <summary>
         /// This method updates the Duck DNS Subdomain IP address.
@@ -32,7 +39,7 @@ namespace DuckDNS
                 else
                 {
                     string url = "https://www.duckdns.org/update?domains=" + Domain + "&token=" + Token + "&ip=&ipv6=";
-                    string ret = cli.DownloadString(url);
+                    string ret = Cli().DownloadString(url);
                     if (ret != "OK")
                         messages.Add("Failed");
                 }
@@ -65,7 +72,7 @@ namespace DuckDNS
                         getHostIPs(d.ResolutionValue, out ipv4, out ipv6);
                         break;
                     case DDnsResolutionMode.WebService:
-                        IPset(cli.DownloadString(d.ResolutionValue), out ipv4, out ipv6);
+                        IPset(Cli().DownloadString(d.ResolutionValue), out ipv4, out ipv6);
                         break;
                     default:
                         throw new Exception("Resolution mode not implemented");
@@ -92,9 +99,7 @@ namespace DuckDNS
                 }
                 else
                 {
-                    if (cli == null)
-                        cli = new WebClient();
-                    ret = cli.DownloadString(url);
+                    ret = Cli().DownloadString(url);
                 }
                 if (ret != "OK")
                     messages.Add(d.Domain + ": Failed");
