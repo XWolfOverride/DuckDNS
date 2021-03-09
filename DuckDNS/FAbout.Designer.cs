@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FAbout));
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbVersion = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@
             // 
             this.pbLogo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
-            this.pbLogo.Location = new System.Drawing.Point(190, 114);
+            this.pbLogo.Location = new System.Drawing.Point(157, 114);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(92, 83);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -74,17 +74,17 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "A Simple DuckDNS Updater";
             // 
-            // label2
+            // lbVersion
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Calibri", 14F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(223)))));
-            this.label2.Location = new System.Drawing.Point(284, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 23);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "v 2.1";
+            this.lbVersion.AutoSize = true;
+            this.lbVersion.BackColor = System.Drawing.Color.Transparent;
+            this.lbVersion.Font = new System.Drawing.Font("Calibri", 14F);
+            this.lbVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(223)))));
+            this.lbVersion.Location = new System.Drawing.Point(284, 42);
+            this.lbVersion.Name = "lbVersion";
+            this.lbVersion.Size = new System.Drawing.Size(19, 23);
+            this.lbVersion.TabIndex = 2;
+            this.lbVersion.Text = "v";
             // 
             // label3
             // 
@@ -129,7 +129,7 @@
             this.lbBy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.lbBy.Location = new System.Drawing.Point(5, 221);
             this.lbBy.Name = "lbBy";
-            this.lbBy.Size = new System.Drawing.Size(463, 65);
+            this.lbBy.Size = new System.Drawing.Size(398, 65);
             this.lbBy.TabIndex = 7;
             this.lbBy.Text = "by XWolfOverride, with the collaboration of GitHub Users:\r\nfullbanner, bugfix on " +
     "startup link\r\nHenrique Mendoça, IPv6 support\r\nIgnacio - Innovo, UI with Material" +
@@ -143,10 +143,10 @@
             this.pHeader.Controls.Add(this.pTitleBar);
             this.pHeader.Controls.Add(this.label1);
             this.pHeader.Controls.Add(this.label4);
-            this.pHeader.Controls.Add(this.label2);
+            this.pHeader.Controls.Add(this.lbVersion);
             this.pHeader.Location = new System.Drawing.Point(1, 1);
             this.pHeader.Name = "pHeader";
-            this.pHeader.Size = new System.Drawing.Size(470, 100);
+            this.pHeader.Size = new System.Drawing.Size(405, 100);
             this.pHeader.TabIndex = 11;
             // 
             // pTitleBar
@@ -157,7 +157,7 @@
             this.pTitleBar.Controls.Add(this.button1);
             this.pTitleBar.Location = new System.Drawing.Point(0, 0);
             this.pTitleBar.Name = "pTitleBar";
-            this.pTitleBar.Size = new System.Drawing.Size(470, 27);
+            this.pTitleBar.Size = new System.Drawing.Size(405, 27);
             this.pTitleBar.TabIndex = 12;
             this.pTitleBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pTitleBar_MouseMove);
             // 
@@ -169,7 +169,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
             this.button1.Image = global::DuckDNS.Properties.Resources.close;
-            this.button1.Location = new System.Drawing.Point(440, 2);
+            this.button1.Location = new System.Drawing.Point(375, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(28, 23);
             this.button1.TabIndex = 2;
@@ -186,7 +186,7 @@
             this.panel2.Controls.Add(this.button4);
             this.panel2.Location = new System.Drawing.Point(12, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(113, 23);
+            this.panel2.Size = new System.Drawing.Size(48, 23);
             this.panel2.TabIndex = 10;
             // 
             // button3
@@ -196,7 +196,7 @@
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button3.Location = new System.Drawing.Point(49, 2);
+            this.button3.Location = new System.Drawing.Point(-16, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(28, 18);
             this.button3.TabIndex = 1;
@@ -210,7 +210,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(33)))), ((int)(((byte)(33)))));
-            this.button2.Location = new System.Drawing.Point(80, 1);
+            this.button2.Location = new System.Drawing.Point(15, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(28, 21);
             this.button2.TabIndex = 2;
@@ -235,7 +235,7 @@
             this.panelFooter.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.panelFooter.Controls.Add(this.label3);
             this.panelFooter.Controls.Add(this.linkLabel1);
-            this.panelFooter.Location = new System.Drawing.Point(128, 306);
+            this.panelFooter.Location = new System.Drawing.Point(95, 306);
             this.panelFooter.Name = "panelFooter";
             this.panelFooter.Size = new System.Drawing.Size(217, 19);
             this.panelFooter.TabIndex = 12;
@@ -245,7 +245,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(472, 326);
+            this.ClientSize = new System.Drawing.Size(407, 326);
             this.Controls.Add(this.panelFooter);
             this.Controls.Add(this.pHeader);
             this.Controls.Add(this.panel2);
@@ -273,7 +273,7 @@
 
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbVersion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label4;

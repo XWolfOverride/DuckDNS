@@ -15,6 +15,7 @@ namespace DuckDNS
         private FAbout()
         {
             InitializeComponent();
+            lbVersion.Text = "v "+Program.VERSION;
         }
 
         public static void Execute()
