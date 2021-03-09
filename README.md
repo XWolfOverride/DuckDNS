@@ -93,9 +93,9 @@ In this screen you can edit the domain name and the IP resolution technique.
 	
 	The url path can be a file path useful for local programs.
 
-## IP / NIC binding (V2.2)
+## IP / NIC binding (v2.2)
 
-When editing an item in V2.2 a new section will be swohn allowing user to bind the call to an specific IP or NIC.  
+When editing an item in v2.2 a new section will be swohn allowing user to bind the call to an specific IP or NIC.  
 Useful when the computer have more than one connections to internet and a specific domain need to be resolved to specific connection.
 
 | ![](res/cap/22-bind.png) |
@@ -103,6 +103,6 @@ Useful when the computer have more than one connections to internet and a specif
 | *<sub>Domain editor screen in v2.2.</sub>* |
 
 Use the drop down on the Bind to IP field to select the desired IP, whis IP can not be the external one and is shown here for refernece,
-when using server resolution the external IP of this nic will be used instead.
+when using server resolution the external IP of this NIC will be used instead.
 
-Selecting "<any>" the binding logics will not be executed for the specific domain and the update call can be routed for any of the available internet connections.
+Selecting "any" the binding logics will not be executed for the specific domain and the update call can be routed for any of the available internet connections.
