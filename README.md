@@ -49,6 +49,10 @@ Advanced mode is only available through Multi domains edition.
 |:--:|
 | *<sub>Main screen in advanced mode.</sub>* |
 
+
+| ![](res/cap/21-advanced.png) |
+| *<sub>Main screen in advanced mode.</sub>* |
+
 For more configuration options use the gear button and enable the multi domains mode.
 
 ![](res/cap/21-settings.png)
