@@ -38,14 +38,16 @@ Click with the secondary mouse button will show a menu with tree options:
 ![](res/cap/21-menu.png)
 
 * Update Now! > Forces a domain update round and reset intervals.
-* Install Startup Shortcut > Creates a shortcut to start the updater on at boot.
+* Install Startup Shortcut > Creates a shortcut to start the updater at boot.
 * Exit > Closes DuckDNS updater.
 
 ## Advanced mode
 
-![](res/cap/21-advanced.png)
+Advanced mode is only available through Multi domains edition.
 
-Main screen in advanced mode.
+| ![](res/cap/21-advanced.png) |
+|:--:|
+| *Main screen in advanced mode.* |
 
 For more configuration options use the gear button and enable the multi domains mode.
 
@@ -86,3 +88,5 @@ In this screen you can edit the domain name and the IP resolution technique.
 	Prior to updating the address on DuckDNS a GET call tho the web service is done, and the IP returned on this service will be used.
 	
 	The url path can be a file path useful for local programs.
+
+### Domain item edition
