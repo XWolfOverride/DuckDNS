@@ -38,7 +38,7 @@ namespace DuckDNS
                 }
                 else
                 {
-                    string url = "https://www.duckdns.org/update?domains=" + Domain + "&token=" + Token + "&ip=&ipv6=";
+                    string url = BuildURL(Domain, Token, "", "");//"https://www.duckdns.org/update?domains=" + Domain + "&token=" + Token + "&ip=&ipv6=";
                     string ret = Cli().DownloadString(url);
                     if (ret != "OK")
                         messages.Add("Failed");
@@ -82,7 +82,7 @@ namespace DuckDNS
                     messages.Add(d.Domain + ": IP resolution failed");
                     return;
                 }
-                string url = "https://www.duckdns.org/update?domains=" + d.Domain + "&token=" + Token + "&ip=" + ipv4 + "&ipv6=" + ipv6;
+                string url = BuildURL(d.Domain, Token, ipv4, ipv6);// "https://www.duckdns.org/update?domains=" + d.Domain + "&token=" + Token + "&ip=" + ipv4 + "&ipv6=" + ipv6;
                 string ret;
                 if (!string.IsNullOrEmpty(d.BindIP))
                 {
@@ -108,6 +108,16 @@ namespace DuckDNS
             {
                 messages.Add(d.Domain + ": " + e.GetType().Name + ": " + e.Message);
             }
+        }
+
+        private string BuildURL(string domain, string token, string ipv4, string ipv6)
+        {
+            string url = ServiceURL;
+            url = url.Replace("<DOM>", domain);
+            url = url.Replace("<TKN>", token);
+            url = url.Replace("<IP4>", ipv4);
+            url = url.Replace("<IP6>", ipv6);
+            return url;
         }
 
         private void getHostIPs(string host, out string ipv4, out string ipv6)
@@ -242,6 +252,7 @@ namespace DuckDNS
         public string Domain { get; set; }
         public string Token { get; set; }
         public string Interval { get; set; }
+        public string ServiceURL { get; set; } = "https://www.duckdns.org/update?domains=<DOM>&token=<TKN>&ip=<IP4>&ipv6=<IP6>";
         public List<DDnsDomain> Domains { get; } = new List<DDnsDomain>();
     }
 
@@ -339,6 +350,8 @@ namespace DuckDNS
                 }
                 pname = pname.Trim();
                 PropertyInfo pi = t.GetProperty(pname);
+                if (pi == null)
+                    continue;
                 if (array)
                 {
                     Type itemtype;
