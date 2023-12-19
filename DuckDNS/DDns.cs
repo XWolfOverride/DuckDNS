@@ -115,8 +115,24 @@ namespace DuckDNS
             string url = ServiceURL;
             url = url.Replace("<DOM>", domain);
             url = url.Replace("<TKN>", token);
-            url = url.Replace("<IP4>", ipv4);
-            url = url.Replace("<IP6>", ipv6);
+
+            if (ipv4 == string.Empty)
+            {
+                url = url.Replace("&ip=<IP4>", "");
+
+            }
+            else
+            {
+                url = url.Replace("<IP4>", ipv4);
+            }
+            if (ipv6 == string.Empty)
+            {
+                url = url.Replace("&ipv6=<IP6>", "");
+            }
+            else
+            {
+                url = url.Replace("<IP6>", ipv6);
+            }
             return url;
         }
 
